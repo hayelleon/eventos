@@ -1,3 +1,0 @@
-Consertar eventa_name retornando false
-
-Terminar change_event

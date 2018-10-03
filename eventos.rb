@@ -13,7 +13,7 @@ class Evento
 	
 
  	def to_s
-	    "Evento: #{self.event_name} (#{self.capacity})\n"+	
-	    "Local: #{self.place} - Endereço: #{self.address}\n"
+	    "	  Evento: #{self.event_name} (#{self.capacity} pessoas)\n"+	
+	    "	   Local: #{self.place} - Endereço: #{self.address}\n\n"
   	end
 end

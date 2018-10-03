@@ -36,9 +36,10 @@ class Programa
 
 	def run_event_registration
 		loop do |cadastro|
-			puts 'Evento: '
+			puts "\nEvento: "
 			event_name = gets.chomp
-			if event_name = event_name.empty?
+			event = event_name
+			if event = event.empty?
 				option = run
 			end
 			puts 'Capacidade: '
@@ -49,27 +50,24 @@ class Programa
 			puts 'Endereço: '
 			address = gets.chomp
 					
-			evento = {
+			@evento = {
 						evento: event_name,
 						capacidade: capacity,
 						local: place,
 						address: address
 					}
-			@eventos_cadastrados << evento
-			
-			evento_criado = Evento.new(@eventos_cadastrados.event_name, @eventos_cadastrados.capacity, @eventos_cadastrados_place, @eventos_cadastrados.address)
-			@evento << evento_criado
-			@eventos_cadastrados << evento
 
+			evento_criado = Evento.new(@evento[:evento], @evento[:capacidade], @evento[:local], @evento[:address])
+			@eventos_cadastrados << evento_criado
 			binding.pry
 		end
 	end
 
 	def show_events
-		puts "Existem: " + @evento.length.to_s + " eventos criados."
+		puts "Existem: " + @eventos_cadastrados.length.to_s + " eventos criados."
 	    	count = 1
-	    @evento.each do |evento|
-	    	puts "\n#{count}."
+	    @eventos_cadastrados.each do |evento|
+	    	puts "\n 	 #{count}."
 		    puts evento
 		    count += 1
 	  	end		
@@ -78,10 +76,10 @@ class Programa
 	def change_event
 		puts 'Escolha um evento: '
 		choose_event = gets.to_i
-		puts @evento[choose_event - 1]
+		puts @eventos_cadastrados[choose_event - 1]
 		puts 'Escolha um item para modificar: '
 		choose_item = gets.chomp
-		puts @evento.find(choose_item.to_sym)
+		puts @eventos_cadastrados.find(choose_item.to_sym)
 		binding.pry
 
 	end
