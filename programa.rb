@@ -13,7 +13,8 @@ class Programa
 		puts '1 - Adicionar Evento'
 		puts '2 - Listar Eventos'
 		puts '3 - Alterar Evento'
-		puts '4 - Sair'
+		puts '4 - Apagar Evento'
+		puts '5 - Sair'
 
 		prompt = gets.to_i		
 	end
@@ -26,8 +27,10 @@ class Programa
 	        	run_event_registration
 	      	elsif option == 2
 	        	show_events
-	    	else option == 3
+	    	elsif option == 3
 	        	change_event
+	        else option == 4
+	        	delete_event
 	      	end
 	      	
 	      	option = prompt
@@ -36,7 +39,7 @@ class Programa
 
 	def run_event_registration
 		loop do |cadastro|
-			puts "\nEvento: "
+			puts "\nEvento: (digite [enter] para sair)"
 			event_name = gets.chomp
 			event = event_name
 			if event = event.empty?
@@ -59,7 +62,6 @@ class Programa
 
 			evento_criado = Evento.new(@evento[:evento], @evento[:capacidade], @evento[:local], @evento[:address])
 			@eventos_cadastrados << evento_criado
-			binding.pry
 		end
 	end
 
@@ -80,8 +82,11 @@ class Programa
 		puts 'Escolha um item para modificar: '
 		choose_item = gets.chomp
 		puts @eventos_cadastrados.find(choose_item.to_sym)
-		binding.pry
+		#binding.pry		
+	end
 
+	def delete_event
+		
 	end
 end
 

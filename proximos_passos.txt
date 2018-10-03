@@ -1,5 +1,3 @@
-FIXEDERROR
-+ Consertar event_name retornando false
-FIXEDERROR
-
 Terminar change_event
+
+criar delete_event
